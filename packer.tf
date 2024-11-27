@@ -26,7 +26,7 @@ provider "azurerm" {
 variable "location" {
   type        = string
   description = "Azure region for Packer resources."
-  default     = "Switzerland North"
+  default     = "australia south"
 }
 
 # Packer Resource Groups
@@ -81,14 +81,14 @@ resource "azurerm_role_assignment" "packer_artifacts_contributor" {
 
 # Export Variables For Packer
 
-data "github_repository" "packer_windows_avd" {
-  full_name = "schnerring/packer-windows-avd"
+data "github_repository" "pkrimagebuild" {
+  full_name = "victorjayctx/pkrimagebuild"
 }
 
 # Azure CLI Authentication
 
 resource "github_actions_secret" "github_actions_azure_credentials" {
-  repository  = data.github_repository.packer_windows_avd.name
+  repository  = data.github_repository.pkrimagebuild.name
   secret_name = "AZURE_CREDENTIALS"
 
   plaintext_value = jsonencode(
@@ -104,25 +104,25 @@ resource "github_actions_secret" "github_actions_azure_credentials" {
 # Packer Authentication
 
 resource "github_actions_secret" "packer_client_id" {
-  repository      = data.github_repository.packer_windows_avd.name
+  repository      = data.github_repository.pkrimagebuild.name
   secret_name     = "PACKER_CLIENT_ID"
   plaintext_value = azuread_application.packer.client_id
 }
 
 resource "github_actions_secret" "packer_client_secret" {
-  repository      = data.github_repository.packer_windows_avd.name
+  repository      = data.github_repository.pkrimagebuild.name
   secret_name     = "PACKER_CLIENT_SECRET"
   plaintext_value = azuread_service_principal_password.packer.value
 }
 
 resource "github_actions_secret" "packer_subscription_id" {
-  repository      = data.github_repository.packer_windows_avd.name
+  repository      = data.github_repository.pkrimagebuild.name
   secret_name     = "PACKER_SUBSCRIPTION_ID"
   plaintext_value = data.azurerm_subscription.subscription.subscription_id
 }
 
 resource "github_actions_secret" "packer_tenant_id" {
-  repository      = data.github_repository.packer_windows_avd.name
+  repository      = data.github_repository.pkrimagebuild.name
   secret_name     = "PACKER_TENANT_ID"
   plaintext_value = data.azurerm_subscription.subscription.tenant_id
 }
@@ -130,7 +130,7 @@ resource "github_actions_secret" "packer_tenant_id" {
 # Packer Resource Groups
 
 resource "github_actions_secret" "packer_artifacts_resource_group" {
-  repository      = data.github_repository.packer_windows_avd.name
+  repository      = data.github_repository.pkrimagebuild.name
   secret_name     = "PACKER_ARTIFACTS_RESOURCE_GROUP"
   plaintext_value = azurerm_resource_group.packer_artifacts.name
 }
