@@ -136,7 +136,7 @@ resource "github_actions_secret" "packer_artifacts_resource_group" {
 }
 
 resource "github_actions_secret" "packer_build_resource_group" {
-  repository      = data.github_repository.packer_windows_avd.name
+  repository      = data.github_repository.pkrimagebuild.name
   secret_name     = "PACKER_BUILD_RESOURCE_GROUP"
   plaintext_value = azurerm_resource_group.packer_build.name
 }

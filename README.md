@@ -1,6 +1,6 @@
-# packer-windows-avd
+# pkrimagebuild
 
-Custom Windows 11 "golden" image for Azure Virtual Desktop (AVD) built with Packer.
+Custom Windows 11 "golden" image for Citrix built with Packer.
 
 It [bundles apps](./packages.config) that make the image suitable for software development workstations using [Chocolatey](https://chocolatey.org/) and a [PowerShell provisioning script](./install-azure-powershell.ps1).
 
