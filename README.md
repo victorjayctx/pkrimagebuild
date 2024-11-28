@@ -1,6 +1,6 @@
-# pkrimagebuild
+# packerimage for citrix daas
 
-Custom Windows 11 "golden" image for Citrix built with Packer.
+Custom Windows 11 "golden" image for DaaS built with Packer.
 
 It [bundles apps](./packages.config) that make the image suitable for software development workstations using [Chocolatey](https://chocolatey.org/) and a [PowerShell provisioning script](./install-azure-powershell.ps1).
 
@@ -41,7 +41,7 @@ packer build \
   -var "tenant_id=$(terraform output -raw packer_tenant_id)" \
   -var "source_image_publisher=MicrosoftWindowsDesktop" \
   -var "source_image_offer=office-365" \
-  -var "source_image_sku=win11-21h2-avd-m365" \
+  -var "source_image_sku=win1123h2" \
   -var "source_image_version=22000.556.220308" \
   .
 ```
