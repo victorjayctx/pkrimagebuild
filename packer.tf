@@ -21,12 +21,13 @@ terraform {
 
 provider "azurerm" {
   features {}
+  subscription_id = "545a7b1a-0425-4cf0-95ac-825c1e4130e8"
 }
 
 variable "location" {
   type        = string
   description = "Azure region for Packer resources."
-  default     = "australia south"
+  default     = "australiaeast"
 }
 
 # Packer Resource Groups
