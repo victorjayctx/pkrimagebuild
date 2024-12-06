@@ -1,11 +1,11 @@
-name: Packer
+# name: Packer
 
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: 0 0 * * *
+# on:
+#   push:
+#     branches:
+#       - main
+#   schedule:
+#     - cron: 0 0 * * *
 
 env:
   AZ_CLI_VERSION: 2.40.0
